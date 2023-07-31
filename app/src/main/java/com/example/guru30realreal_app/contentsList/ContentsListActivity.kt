@@ -9,6 +9,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.guru30realreal_app.R
+import com.google.firebase.database.ktx.database
+import com.google.firebase.ktx.Firebase
+
 
 class ContentsListActivity : AppCompatActivity() {
 
@@ -17,6 +20,13 @@ class ContentsListActivity : AppCompatActivity() {
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.fragment_tip)
+
+        // Write a message to the database
+        val database = Firebase.database
+        val myRef = database.getReference("message")
+
+        myRef.setValue("Hello, World!")
+
 
         val rv : RecyclerView = findViewById(R.id.rv)
 
