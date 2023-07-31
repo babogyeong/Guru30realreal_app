@@ -15,10 +15,10 @@
         android:layout_height="match_parent">
 
         <ImageView
-            android:src="@drawable/loginbg"
-            android:layout_width="match_parent"
+            android:src="@drawable/title"
+            android:layout_width="wrap_content"
             android:scaleType="fitXY"
-            android:layout_height="500dp"/>
+            android:layout_height="wrap_content"/>
 
         <ImageView
             android:src="@drawable/upperbg"
@@ -40,7 +40,6 @@
                 android:text="로그인"
                 android:textSize="20sp"
                 android:textStyle="bold"
-
                 android:layout_width="match_parent"
                 android:layout_margin="5dp"
                 android:layout_height="60dp"/>
