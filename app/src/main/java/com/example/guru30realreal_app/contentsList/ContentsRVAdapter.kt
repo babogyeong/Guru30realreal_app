@@ -13,6 +13,12 @@ import com.example.guru30realreal_app.R
 class ContentsRVAdapter(val context: Context, val items : ArrayList<ContentsModel>) :
     RecyclerView.Adapter<ContentsRVAdapter.Viewholder>() {
 
+    interface ItemClick{
+        fun onClick(view:View, position:Int)
+    }
+    var itemClick : ItemClick? = null
+
+
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
@@ -22,6 +28,11 @@ class ContentsRVAdapter(val context: Context, val items : ArrayList<ContentsMode
     }
 
     override fun onBindViewHolder(holder: ContentsRVAdapter.Viewholder, position: Int) {
+        if(itemClick!=null){
+            holder.itemView.setOnClickListener{v->
+                itemClick?.onClick(v,position)
+            }
+        }
         holder.bindItems(items[position])
     }
 
