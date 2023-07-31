@@ -6,6 +6,9 @@ import android.os.Bundle
 import android.os.Handler
 import android.util.Log
 import com.example.guru30realreal_app.auth.IntroActivity
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 
 class SplashActivity : AppCompatActivity() {
 
@@ -16,15 +19,15 @@ class SplashActivity : AppCompatActivity() {
 
         auth = Firebase.auth
 
-        if(auth.currentUser.uid == null) {
+        if(auth.currentUser!!.uid == null) {
             Log.d("SplashActivity", "null")
         }else {
             Log.d("SplashActivity", "not null")
         }
 
-       // Handler().postDelayed( {
-       //     startActivity(Intent(this, IntroActivity::class.java))
-       //     finish()
-        //},3000)
+        Handler().postDelayed( {
+        startActivity(Intent(this, IntroActivity::class.java))
+        finish()
+        },3000)
     }
 }

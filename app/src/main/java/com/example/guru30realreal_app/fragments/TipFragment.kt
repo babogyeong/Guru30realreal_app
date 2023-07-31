@@ -1,5 +1,6 @@
 package com.example.guru30realreal_app.fragments
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -8,6 +9,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import com.example.guru30realreal_app.R
+import com.example.guru30realreal_app.contentsList.ContentsListActivity
 import com.example.guru30realreal_app.databinding.FragmentTipBinding
 
 class TipFragment : Fragment() {
@@ -27,7 +29,11 @@ class TipFragment : Fragment() {
 
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_tip, container, false)
 
-
+        binding.category1.setOnClickListener {
+            val intent = Intent(context, ContentsListActivity::class.java)
+            intent.putExtra("category","category1")
+            startActivity(intent)
+        }
 
         binding.homeTap.setOnClickListener {
             it.findNavController().navigate(R.id.action_tipFragment_to_homeFragment)

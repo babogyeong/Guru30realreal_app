@@ -12,13 +12,14 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.guru30realreal_app.R
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 
 
 class ContentsListActivity : AppCompatActivity() {
-
+    lateinit var myRef:DatabaseReference
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -31,8 +32,14 @@ class ContentsListActivity : AppCompatActivity() {
 
         // Write a message to the database
         val database = Firebase.database
-        val myRef = database.getReference("contents")
+        val category = intent.getStringExtra("category")
 
+
+       // categoryt1구현(all)
+        if(category=="category1"){
+            myRef = database.getReference("contents")
+
+        }
         val postListener = object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
 
@@ -51,6 +58,7 @@ class ContentsListActivity : AppCompatActivity() {
             }
         }
         myRef.addValueEventListener(postListener)
+
 
 
         val rv : RecyclerView = findViewById(R.id.rv)
@@ -87,7 +95,7 @@ class ContentsListActivity : AppCompatActivity() {
       items.add(ContentsModel("title10", "https://images.mypetlife.co.kr/content/uploads/2023/07/24193039/AdobeStock_273330906-1536x1024.jpeg","https://mypetlife.co.kr/149027/"))
       items.add(ContentsModel("title11", "https://images.mypetlife.co.kr/content/uploads/2022/04/18113500/florencia-potter-yxmNWxi3wCo-unsplash-edited-scaled.jpg","https://mypetlife.co.kr/114046/"))
       items.add(ContentsModel("title12", "https://images.mypetlife.co.kr/content/uploads/2022/04/12142152/%EC%8A%AC%EA%B0%9C%EA%B3%A8.png","https://mypetlife.co.kr/113673/"))
-*/
+**/
 
     }
 }
