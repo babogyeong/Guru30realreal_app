@@ -1,5 +1,16 @@
 <resources>
-    <string name="app_name">Guru30realreal_app</string>
+    <string name="app_name">guru30realreal_app</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="ghost_view">view</string>
+
+    <string name="ghost_view_holder">view_holder</string>
+    <string name="parent_matrix">matrix</string>
+    <string name="save_non_transition_alpha">non_transition_alpha</string>
+    <string name="save_overlay_view">overlay_view</string>
+    <string name="transition_current_scene">current_scene</string>
+    <string name="transition_layout_save">layout_save</string>
+    <string name="transition_position">position</string>
+    <string name="transition_scene_cache">scene_cache</string>
+    <string name="transition_transform">transition_transform</string>
 </resources>
