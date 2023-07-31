@@ -46,6 +46,7 @@ class ContentsListActivity : AppCompatActivity() {
                 Toast.makeText(baseContext,items[position].title, Toast.LENGTH_LONG).show()
 
                 val intent = Intent(this@ContentsListActivity, ContentShowActivity::class.java)
+                intent.putExtra("url",items[position].webUrl)
                 startActivity(intent)
             }
         }
