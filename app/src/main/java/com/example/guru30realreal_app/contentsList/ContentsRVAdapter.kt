@@ -1,13 +1,16 @@
 package com.example.guru30realreal_app.contentsList
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.guru30realreal_app.R
 
-class ContentsRVAdapter(val items : ArrayList<ContentsModel>) :
+class ContentsRVAdapter(val context: Context, val items : ArrayList<ContentsModel>) :
     RecyclerView.Adapter<ContentsRVAdapter.Viewholder>() {
 
     override fun onCreateViewHolder(
@@ -30,7 +33,13 @@ class ContentsRVAdapter(val items : ArrayList<ContentsModel>) :
         fun bindItems(item : ContentsModel) {
 
             val contentTitle = itemView.findViewById<TextView>(R.id.textArea)
+            val imageViewArea = itemView.findViewById<ImageView>(R.id.imageArea)
+
             contentTitle.text = item.title
+            Glide.with(context)
+                .load(item.imageUrl)
+                .into(imageViewArea)
+
 
         }
     }
