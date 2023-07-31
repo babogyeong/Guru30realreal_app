@@ -1,7 +1,10 @@
 package com.example.guru30realreal_app.contentsList
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
+import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -17,6 +20,7 @@ class ContentsListActivity : AppCompatActivity() {
 
         val rv : RecyclerView = findViewById(R.id.rv)
 
+        //북마크에 띄울 아이템 생성(ContentsModel바탕으로 함.)
         val items = ArrayList<ContentsModel>()
         items.add(ContentsModel("title1", "https://images.mypetlife.co.kr/content/uploads/2023/03/02115658/AdobeStock_19383271-1536x1024.jpeg","https://mypetlife.co.kr/144708/"))
         items.add(ContentsModel("title2", "https://mypetlife.co.kr/wp-content/uploads/2019/06/adorable-animal-backyard-247937-1024x683.jpg","https://mypetlife.co.kr/32243/"))
@@ -35,5 +39,15 @@ class ContentsListActivity : AppCompatActivity() {
         rv.adapter = rvAdapter
 
         rv.layoutManager = GridLayoutManager(this,2)
+
+        rvAdapter.itemClick = object : ContentsRVAdapter.ItemClick{
+            override fun onClick(view: View, position: Int) {
+                //이미지 클릭시 해당 items의 title을 Toast메세지로 띄움
+                Toast.makeText(baseContext,items[position].title, Toast.LENGTH_LONG).show()
+
+                val intent = Intent(this@ContentsListActivity, ContentShowActivity::class.java)
+                startActivity(intent)
+            }
+        }
     }
 }
